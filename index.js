@@ -3,6 +3,7 @@ var app = new Vue({
 	data: {
 		title:'亚瑟浏览器常见问题排查',
 		notice:'快速反馈问题请进QQ群：1019280543',
+		activeName:'1',
 		questions:[
 			{
 				title: "卸载-换手机, 会员权益是否还在?",
@@ -41,14 +42,5 @@ var app = new Vue({
 				select: false
 			},
 		]
-	},
-	methods: {
-		handleItemClick(id) {
-			console.log(id);
-			for (var i = 0; i < this.questions.length; i++) {
-				let item = this.questions[i];
-				item.select = item.id === id;
-			}
-		}
 	}
 })

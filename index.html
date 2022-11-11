@@ -18,17 +18,29 @@
 		/>
 		</div>
 		<!-- 常见问题 -->
-		<div class='content_wrap'>
-			<div class="cell_content" v-for="item in questions" :key="item.id" @click="handleItemClick(item.id)">
-				<div :class="{'title-content': true, 'active': item.select}">
-					<div class="xuhao_bg">
-						<span class="xuhao" v-cloak>{{item.id}}</span>
-					</div>
-					<span class="title" v-cloak>{{item.title}}</span>
-				</div>
-				<p class="des-content" v-cloak v-if="item.select" v-html="item.content"></p>
-			</div>
-		</div>
+		<van-collapse v-model="activeName" accordion border=false>
+  			<van-collapse-item :name="item.id" v-for="item in questions" :key="item.id">
+  				<template #title>
+  					<div class="title-content">
+  						<div class="xuhao_bg">
+  							<div class="xuhao" v-cloak>{{item.id}}</div>
+  						</div>
+  						<div class="title-txt" v-cloak>{{item.title}}</div>
+  					</div>
+  				</template>
+  				<template #right-icon>
+  					<div class="right-icon-class">
+  						<van-icon name="arrow"  />
+  					</div>
+  					
+  				</template>
+  				<template #default>
+  					<div class="des-content" v-html="item.content">
+  					</div>
+  				</template>
+    			{{item.content}}
+  			</van-collapse-item>
+		</van-collapse>
 	</div>
 	
 </body>
