@@ -5,7 +5,7 @@
 
 body {
 	margin: 0;
-	background-color: #ffff;
+	/*background-color: #ffff;*/
 }
 
 #app {
@@ -14,9 +14,10 @@ body {
 }
 
 #app .title {
-	padding: 15px;
-	color: #333;
+	padding: 30px 15px 25px;
+/*	color: #333;*/
 	font-size: 20px;
+	font-weight: 600;
 }
 
 #app van-notice-bar {
@@ -25,14 +26,24 @@ body {
 }
 
 .title-content {
-	padding: 10px 0;
 	display: flex;
-	justify-content: flex-start;
 	align-items: center;
+	position: relative;
 }
 
+.title-content .title_bg_active {
+	background-color: #fff;
+	position: absolute;
+	top: -20px;
+	left: -50px;
+	right: -50px;
+	height: 65px;
+	z-index: -1;
+}
+
+
 .title-content .xuhao_bg {
-	color: #fff;
+/*	color: #fff;*/
 	border: 10px solid #EA7437;
 	border-radius: 50%;
 	position: relative;
@@ -57,13 +68,15 @@ body {
 	padding: 0;
 	border: 0;
 	margin-left: 15px;
-	line-height: 25px;
 }
 
-.right-icon-class {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.isActive {
+	margin-left: 20px;
+	transition: 0.3s ease-in-out;
+}
+
+.van-collapse-item__title {
+	padding: 20px 15px !important;
 }
 
 .des-content {
@@ -73,6 +86,88 @@ body {
 	padding-left: 35px;
 	padding-right: 15px;
 }
+
+.van-cell {
+	background: transparent !important ;
+}
+
+.van-collapse-item__content {
+	background-color: transparent !important;
+}
+
+.right-icon-class {
+	color: #333;
+}
+
+
+/* 公告弹出层样式 */
+.pop-content {
+	display: flex;
+	margin: 0;
+	flex-direction: column;
+}
+
+.pop-content .pop-title {
+	margin: 60px 20px 15px;
+	color: #EA7437;
+	font-size: 15px;
+	text-align: center;
+}
+
+.pop-content .qqnum {
+	margin-top: 30px;
+	color: #333;
+	font-size: 20px;
+	font-weight: 500;
+	text-align: center;
+}
+
+ /* 适配暗黑模式 */
+:root {
+  color-scheme: light dark;
+  background: white;
+  color: black;
+}
+
+.van-popup {
+    background-color: #fff !important ;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        background: #26222C;
+        color: white;
+    }
+
+    .van-popup {
+    	background-color: #3E3A44 !important ;
+	}
+
+	.van-notice-bar {
+    	background-color: #3E3A44 !important;
+	}
+
+	.title-content .title-txt {
+		color: #fff;
+	}
+	.des-content {
+		color: #fff;
+	}
+	.pop-content .qqnum {
+		color: #fff;
+	}
+
+	.title-content .title_bg_active {
+		background-color: #3E3A44;
+	}
+
+	.right-icon-class {
+		color: #fff;
+	}
+}
+
+
+
 
 
 

@@ -4,6 +4,7 @@ var app = new Vue({
 		title:'亚瑟浏览器常见问题排查',
 		notice:'快速反馈问题请进QQ群：1019280543',
 		activeName:'1',
+		show: false,
 		questions:[
 			{
 				title: "卸载-换手机, 会员权益是否还在?",
@@ -42,5 +43,43 @@ var app = new Vue({
 				select: false
 			},
 		]
+	},
+	methods: {
+		handelItemChange: function(id) {
+			console.log('当前的value');
+			for (var i = 0; i < this.questions.length; i++) {
+				let item = this.questions[i];
+				if (item.id === id) {
+					item.select = !item.select;
+				} else {
+					item.select = false;
+				}
+			}
+		},
+
+		// 公告toast
+		handleNoticeClick: function(){
+			this.show = true;
+		},
+		handleThemeChange() {
+      const darkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+ 
+      // 判断是否匹配深色模式
+      if (darkMode && darkMode.matches) {
+        document.body.classList.add('dark');
+      }
+ 
+      // 监听主题切换事件
+      darkMode && darkMode.addEventListener('change', (e) => {
+        console.log('=====>change mode:', e);
+        if (e.matches) {
+          console.log('=====>e.matches:dark');
+          document.body.classList.add('dark');
+        } else {
+          console.log('=====>e.matches:light');
+          document.body.classList.remove('dark');
+        }
+      });
+    }
 	}
 })

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="color-scheme" content="light dark">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<link rel="stylesheet" href="index.css">
@@ -10,23 +11,27 @@
 <body>
 	<div id="app">
 		<div>
-			<h3 class="title" v-cloak>{{title}}</h3>
+			<div class="title" v-cloak>{{title}}</div>
 		<van-notice-bar
 		  left-icon="volume-o"
 		  scrollable
 		  :text="notice"
+		  @click="handleNoticeClick"
+		  v-cloak
 		/>
 		</div>
 		<!-- 常见问题 -->
 		<van-collapse v-model="activeName" accordion border=false>
   			<van-collapse-item :name="item.id" v-for="item in questions" :key="item.id">
   				<template #title>
-  					<div class="title-content">
+  					<div class="title-content" :class="{'isActive': item.select}"    @click="handelItemChange(item.id)">
+  						<div :class="{'title_bg_active': item.select}"></div>
   						<div class="xuhao_bg">
   							<div class="xuhao" v-cloak>{{item.id}}</div>
   						</div>
   						<div class="title-txt" v-cloak>{{item.title}}</div>
   					</div>
+  					
   				</template>
   				<template #right-icon>
   					<div class="right-icon-class">
@@ -38,9 +43,14 @@
   					<div class="des-content" v-html="item.content">
   					</div>
   				</template>
-    			{{item.content}}
   			</van-collapse-item>
 		</van-collapse>
+		<van-popup v-model="show" :style="{ height: '30%', width: '70%' }" round lock-scroll closeable>
+			<div class="pop-content">
+				<div class="pop-title">快速反馈问题请进QQ群</div>
+				<div class="qqnum">1019280543</div>
+			</div>
+		</van-popup>
 	</div>
 	
 </body>
